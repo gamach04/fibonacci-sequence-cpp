@@ -1,15 +1,23 @@
 #include <iostream>
+#include <vector>
 
-int fib(int n) {
-    if (n == 0) {
-        return 0;
-    } else if (n == 1) {
-        return 1;
+std::vector<int> fib(int n) {
+    std::vector<int> sequence;
+    int a = 0, b = 1;
+    for (int i = 0; i < n; ++i) {
+        sequence.push_back(a);
+        int temp = a;
+        a = b;
+        b = temp + b;
     }
-    return fib(n - 1) + fib(n - 2);
+    return sequence;
 }
 
 int main() {
-    std::cout << fib(10) << std::endl;  // Вывод: 34
+    int n = 10;
+    std::vector<int> sequence = fib(n);
+    for (int num : sequence) {
+        std::cout << num << std::endl;
+    }
     return 0;
 }
